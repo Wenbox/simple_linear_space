@@ -14,12 +14,14 @@ class Vector;
 template<typename T>
 class Matrix {
 public:
-    Matrix(int row, int col) : m_data(row > 0 ? row : throw std::runtime_error("Row must be positive."),
+    // initialize a zero matrix with the specific size
+    Matrix(size_t row, size_t col) : m_data(row > 0 ? row : throw std::runtime_error("Row must be positive."),
                                       std::vector<T>(
                                               col > 0 ? col : throw std::runtime_error("Column must be positive."),
                                               0)) {
     }
 
+    // initialize with std::vector of std::vectors
     Matrix(const std::vector<std::vector<T>> &v) {
         //check sanity
         if (v.empty() || v[0].empty())

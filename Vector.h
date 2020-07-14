@@ -10,9 +10,12 @@ class Matrix;
 template <typename T>
 class Vector {
 public:
-    Vector(int size) : m_data(size > 0 ? std::vector<T>(size) : throw std::runtime_error("Vector size must be positive."))
+
+    //initialize a zero Vector with the specific size > 0
+    Vector(size_t size) : m_data(size > 0 ? std::vector<T>(size) : throw std::runtime_error("Vector size must be positive."))
     {}
 
+    //initialize from a std::vector
     Vector(const std::vector<T>& v) : m_data(v.empty() ? throw std::runtime_error("Vector size must be positive.") : v)
     {}
 
