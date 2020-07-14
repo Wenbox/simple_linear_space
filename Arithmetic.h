@@ -9,7 +9,7 @@
 #include "Vector.h"
 #include "Matrix.h"
 
-
+// Vector + Vector
 template<typename T, typename U>
 Vector<typename std::common_type<T, U>::type> operator+ (const Vector<T> &lhs, const Vector<U> &rhs) {
     using common_type_t = typename std::common_type<T, U>::type;
@@ -22,6 +22,7 @@ Vector<typename std::common_type<T, U>::type> operator+ (const Vector<T> &lhs, c
     return res;
 }
 
+// Vector += Vector
 template<typename T, typename U>
 Vector<T>& operator+= (Vector<T> &lhs, const Vector<U> &rhs) {
     using common_type_t = typename std::common_type<T, U>::type;
@@ -37,6 +38,7 @@ Vector<T>& operator+= (Vector<T> &lhs, const Vector<U> &rhs) {
     }
 }
 
+// Vector * scalar
 template<typename T, typename U>
 Vector<typename std::common_type<T, U>::type> operator* (const Vector<T> &v, const U &scalar) {
     using common_type_t = typename std::common_type<T, U>::type;
@@ -47,11 +49,13 @@ Vector<typename std::common_type<T, U>::type> operator* (const Vector<T> &v, con
     return res;
 }
 
+// scalar * Vector
 template<typename T, typename U>
 Vector<typename std::common_type<T, U>::type> operator*(const T &scalar, const Vector<U> &v) {
     return v * scalar;
 }
 
+// Matrix + Matrix
 template<typename T, typename U>
 Matrix<typename std::common_type<T, U>::type> operator+ (const Matrix<T> &lhs, const Matrix<U> &rhs) {
     using common_type_t = typename std::common_type<T, U>::type;
@@ -65,6 +69,7 @@ Matrix<typename std::common_type<T, U>::type> operator+ (const Matrix<T> &lhs, c
     return res;
 }
 
+// Matrix += Matrix
 template<typename T, typename U>
 Matrix<T>& operator+= (Matrix<T>& lhs, const Matrix<U> &rhs) {
     using common_type_t = typename std::common_type<T, U>::type;
@@ -82,6 +87,7 @@ Matrix<T>& operator+= (Matrix<T>& lhs, const Matrix<U> &rhs) {
     }
 }
 
+// Matrix * scalar
 template<typename T, typename U>
 Matrix<typename std::common_type<T, U>::type> operator* (const Matrix<T> &m, const U &scalar) {
     using common_type_t = typename std::common_type<T, U>::type;
@@ -93,11 +99,13 @@ Matrix<typename std::common_type<T, U>::type> operator* (const Matrix<T> &m, con
     return res;
 }
 
+// scalar * Matrix
 template<typename T, typename U>
 Matrix<typename std::common_type<T, U>::type> operator*(const T &scalar, const Matrix<U> &m) {
     return m * scalar;
 }
 
+// Matrix * Matrix
 template<typename T, typename U>
 Matrix<typename std::common_type<T, U>::type> operator*(const Matrix<T> &A, const Matrix<U> &B) {
     using common_type_t = typename std::common_type<T, U>::type;
@@ -119,6 +127,8 @@ Matrix<typename std::common_type<T, U>::type> operator*(const Matrix<T> &A, cons
     return res;
 }
 
+// Matrix * Vector
+// returns a Vector
 template<typename T, typename U>
 Vector<typename std::common_type<T, U>::type> operator*(const Matrix<T> &M, const Vector<U> &V) {
     using common_type_t = typename std::common_type<T, U>::type;
